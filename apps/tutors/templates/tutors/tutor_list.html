@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Tutors</h2>
+<form method="get" class="row g-2 mb-3">
+  <div class="col-md-4"><input name="q" class="form-control" placeholder="Name or subject" value="{{ request.GET.q }}"></div>
+  <div class="col-md-2"><input name="price_min" type="number" class="form-control" placeholder="Min"></div>
+  <div class="col-md-2"><input name="price_max" type="number" class="form-control" placeholder="Max"></div>
+  <div class="col-md-2"><input name="min_rating" type="number" step="0.1" class="form-control" placeholder="Rating"></div>
+  <div class="col-md-2"><select name="sort" class="form-select"><option value="">Sort</option><option value="rating_desc">Rating</option><option value="price_asc">Price</option></select></div>
+</form>
+<div class="row">
+{% for t in tutors %}
+  <div class="col-md-4 mb-3"><div class="card p-3"><h5>{{ t.user.full_name }}</h5><p>{{ t.bio|truncatechars:80 }}</p><p>${{ t.hourly_rate }} | ??? {{ t.average_rating }}</p><a href="{% url 'tutors:detail' t.id %}" class="btn btn-outline-primary">View</a></div></div>
+{% empty %}<p>No tutors found.</p>{% endfor %}
+</div>
+{% endblock %}

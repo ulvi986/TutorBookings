@@ -1,0 +1,6 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Student Dashboard</h2>
+<a class="btn btn-outline-primary mb-3" href="{% url 'bookings:my' %}">View all bookings</a>
+<ul>{% for b in bookings %}<li>#{{ b.id }} - {{ b.tutor_profile.user.full_name }} - {{ b.status }}</li>{% empty %}<li>No bookings.</li>{% endfor %}</ul>
+{% endblock %}

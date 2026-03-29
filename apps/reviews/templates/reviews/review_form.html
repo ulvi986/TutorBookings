@@ -1,0 +1,6 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Leave Review</h2>
+<p>Booking #{{ booking.id }} with {{ booking.tutor_profile.user.full_name }}</p>
+<form method="post" class="card p-3">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary">Submit Review</button></form>
+{% endblock %}

@@ -1,0 +1,4 @@
+Django==5.2.12
+python-decouple==3.8
+psycopg2-binary==2.9.10
+Pillow==11.2.1

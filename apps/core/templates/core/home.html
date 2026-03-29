@@ -1,0 +1,8 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="p-5 bg-light rounded-3">
+  <h1>Online Tutor Booking Platform</h1>
+  <p>Browse tutors and book sessions quickly.</p>
+  <a href="{% url 'tutors:list' %}" class="btn btn-primary">Find Tutors</a>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>{{ tutor.user.full_name }}</h2>
+<p>{{ tutor.bio }}</p>
+<p><strong>Rate:</strong> ${{ tutor.hourly_rate }} | <strong>Rating:</strong> {{ tutor.average_rating }}</p>
+{% if user.is_authenticated and user.role == 'student' %}<a class="btn btn-primary" href="{% url 'bookings:create' tutor.id %}">Book Session</a>{% endif %}
+<hr><h4>Available Slots</h4>
+<ul>{% for s in slots %}<li>{{ s.start_time }} - {{ s.end_time }}</li>{% empty %}<li>No slots.</li>{% endfor %}</ul>
+<hr><h4>Reviews</h4>
+<ul>{% for r in reviews %}<li>???{{ r.rating }} - {{ r.comment }}</li>{% empty %}<li>No reviews yet.</li>{% endfor %}</ul>
+{% endblock %}

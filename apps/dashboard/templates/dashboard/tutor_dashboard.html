@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Tutor Dashboard</h2>
+<p>Status: <strong>{{ profile.status }}</strong></p>
+<p>Active slots: {{ slot_count }}</p>
+<p>Earnings: ${{ earnings }}</p>
+<a class="btn btn-outline-primary" href="{% url 'bookings:tutor' %}">Manage bookings</a>
+<a class="btn btn-outline-secondary" href="{% url 'tutors:availability_manage' %}">Availability</a>
+{% endblock %}

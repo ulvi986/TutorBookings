@@ -1,0 +1,5 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Book {{ tutor.user.full_name }}</h2>
+<form method="post" class="card p-3">{% csrf_token %}{{ form.as_p }}<button class="btn btn-success">Confirm Booking</button></form>
+{% endblock %}

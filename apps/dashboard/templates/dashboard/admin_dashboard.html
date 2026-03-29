@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<div class="row">
+  <div class="col">Students: {{ stats.students }}</div>
+  <div class="col">Tutors: {{ stats.tutors }}</div>
+  <div class="col">Bookings: {{ stats.bookings }}</div>
+</div>
+<hr>
+<h4>Pending Tutor Approvals</h4>
+<ul>
+{% for t in pending_tutors %}
+<li>{{ t.user.full_name }}
+  <a href="{% url 'dashboard:approve_tutor' t.id %}" class="btn btn-sm btn-success">Approve</a>
+  <a href="{% url 'dashboard:suspend_tutor' t.id %}" class="btn btn-sm btn-danger">Suspend</a>
+</li>
+{% empty %}<li>No pending tutor.</li>{% endfor %}
+</ul>
+{% endblock %}

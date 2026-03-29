@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>{% if mode == 'tutor' %}Tutor Bookings{% else %}My Bookings{% endif %}</h2>
+<table class="table">
+<tr><th>ID</th><th>Student</th><th>Tutor</th><th>Slot</th><th>Status</th><th>Action</th></tr>
+{% for b in bookings %}
+<tr>
+<td>{{ b.id }}</td>
+<td>{{ b.student.full_name }}</td>
+<td>{{ b.tutor_profile.user.full_name }}</td>
+<td>{{ b.slot.start_time }}</td>
+<td>{{ b.status }}</td>
+<td>
+{% if mode != 'tutor' and b.status == 'confirmed' %}<a href="{% url 'bookings:cancel' b.id %}" class="btn btn-sm btn-danger">Cancel</a>{% endif %}
+{% if mode != 'tutor' and b.status == 'completed' and not b.review %}<a href="{% url 'reviews:create' b.id %}" class="btn btn-sm btn-warning">Review</a>{% endif %}
+{% if mode != 'tutor' and b.status == 'confirmed' and not b.payment %}<a href="{% url 'bookings:mock_pay' b.id %}" class="btn btn-sm btn-info">Mock Pay</a>{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
