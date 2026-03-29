@@ -1,5 +1,5 @@
 # TutorBookings
-TutorBookings was created by Ulvi for booking teachers with their rating, available time slots and costs. This is project Baku Engineering University
+TutorBookings was created by Ulvi for booking teachers with their rating, available time slots and costs. This is project of Baku Engineering University.
 
 
 # This is architecture of application
